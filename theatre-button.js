@@ -13,30 +13,19 @@ const checkIsLoadedPlayer = () => {
         setTimeout(checkIsLoadedPlayer, 100);
     } else {
         let videoElement = document.body.getElementsByTagName('video')[0];
-        videoElement.addEventListener('loadeddata', function() {
-            addButton()
-            addPlayerClickEvent();
+        videoElement.addEventListener('play', function() {
+            if (!document.body.getElementsByClassName('player-button theatre-button')[0]) {
+                setTimeout(() => {
+                addButton()
+
+                }, 500);
+                
+            }
+            
           });
     }
 };
 
-const addPlayerClickEvent = () => {
-    const playButton = document.querySelector('.player-poster.clickable');
-    const playStopButton = document.querySelector('.player-button.pause-play-button');
-    if (playButton) {
-        playButton.addEventListener('click', () => {
-            if (!document.body.getElementsByClassName('player-button theatre-button')[0]) {
-                addButton();
-            }
-        });
-
-        playStopButton.addEventListener('click', () => {
-            if (!document.body.getElementsByClassName('player-button theatre-button')[0]) {
-                addButton();
-            }
-        });
-    }
-};
 
 let isTheaterMode = false;
 
