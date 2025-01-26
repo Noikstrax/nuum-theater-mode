@@ -1,11 +1,6 @@
-
-
 const openedButtonSvg = "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h7V3H4zM16 3h-3v14h3a2 2 0 002-2V5a2 2 0 00-2-2z";
 const notOpenedButtonSvg = "M2 15V5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2zm2 0V5h7v10H4zm9 0h3V5h-3v10z";
-
-
-
-
+let isTheaterMode = false;
 
 
 const checkIsLoadedPlayer = () => {
@@ -26,8 +21,6 @@ const checkIsLoadedPlayer = () => {
     }
 };
 
-
-let isTheaterMode = false;
 
 const toggleTheaterMode = () => {
     const elementsToToggle = [
@@ -79,6 +72,7 @@ const toggleTheaterMode = () => {
     isTheaterMode = !isTheaterMode;
 };
 
+
 const addButton = () => {
 
     let fullscreenButton = document.querySelectorAll('.player-button.fullscreen-button')[0];
@@ -127,5 +121,6 @@ const addButton = () => {
 
     button.addEventListener("click", toggleTheaterMode);
 };
+
 
 checkIsLoadedPlayer();
