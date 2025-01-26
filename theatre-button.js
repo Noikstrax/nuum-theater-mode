@@ -1,3 +1,5 @@
+
+
 const openedButtonSvg = "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h7V3H4zM16 3h-3v14h3a2 2 0 002-2V5a2 2 0 00-2-2z";
 const notOpenedButtonSvg = "M2 15V5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2zm2 0V5h7v10H4zm9 0h3V5h-3v10z";
 
@@ -40,8 +42,8 @@ let isTheaterMode = false;
 
 const toggleTheaterMode = () => {
     const elementsToToggle = [
-        'app-load-more',
         'app-header',
+        'app-load-more',
         'app-content-feed-block',
         'app-watcher-player-bottom-panel',
         'app-watcher-feed',
@@ -54,10 +56,13 @@ const toggleTheaterMode = () => {
             for (let i = 0; i < element.length; i++) {
                 element[i].hidden = !element[i].hidden;
             }
+        } else if (element.length == 0) {
+            return 0;
+
         } else {
             element[0].hidden = !element[0].hidden;
-
         }
+
     });
 
     const mainElement = document.querySelector("body > app-root > app-watcher-layout > div > main");
@@ -90,9 +95,6 @@ const addButton = () => {
     let fullscreenButton = document.querySelectorAll('.player-button.fullscreen-button')[0];
     if (!fullscreenButton.hasEventListener) {
         fullscreenButton.addEventListener('click', () => {
-            if (isTheaterMode) {
-                toggleTheaterMode();
-            }
             document.body.getElementsByClassName('player-button theatre-button')[0].parentElement.classList.toggle('hidden');
             
         });
