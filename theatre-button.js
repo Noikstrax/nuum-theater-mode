@@ -6,16 +6,15 @@ const notOpenedButtonSvg = "M2 15V5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4
 
 
 
-
-//live
 const checkIsLoadedPlayer = () => {
-    if (!document.body.getElementsByClassName('live')[0]) {
-        setTimeout(checkIsLoadedPlayer, 500);
+    if (!document.body.getElementsByTagName('video')[0]) {
+        setTimeout(checkIsLoadedPlayer, 100);
     } else {
-        setTimeout(() => {
-            addButton();
+        let videoElement = document.body.getElementsByTagName('video')[0];
+        videoElement.addEventListener('loadeddata', function() {
+            addButton()
             addPlayerClickEvent();
-        }, 300);
+          });
     }
 };
 
