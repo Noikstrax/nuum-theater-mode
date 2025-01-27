@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Nuum Theatre Mode",
-    "version": "0.2",
-    "description": "Добавляет кнопку для включения театрального режима на трансляции для сайта Nuum.",
+    "name": "Nuum Theater Mode",
+    "version": "1.0",
+    "description": "Добавляет кнопку для включения театрального режима на трансляциях и записях на сайте Nuum.ru. Кнопка доступна на странице с трансляцией после обновления (F5).",
     "permissions": ["activeTab", "scripting"],
     "host_permissions": ["https://nuum.ru/*"], 
     "content_scripts": [
@@ -12,6 +12,9 @@
       }
     ],
     "icons": {
-      "48": "icons/48-icon.png"
+      "16": "icons/32-icon.png",
+      "32": "icons/32-icon.png",
+      "48": "icons/48-icon.png",
+      "128": "icons/128-icon.png"
     }
 }

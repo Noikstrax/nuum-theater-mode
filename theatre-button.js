@@ -6,12 +6,14 @@ let isPlayerHandled = false;
 let isButtonAdded = false;
 
 const checkIsLoadedPlayer = () => {
+    console.log('Checking for video element...');
     const videoElement = document.body.getElementsByTagName('video')[0];
     
     if (!videoElement) {
         setTimeout(checkIsLoadedPlayer, 100);
     } else if (!isPlayerHandled) {
         videoElement.addEventListener('play', function onPlay() {
+            isButtonAdded = false; // Сбрасываем флаг при каждом новом воспроизведении
             if (!isButtonAdded && !document.body.getElementsByClassName('player-button theatre-button')[0]) {
                 setTimeout(() => {
                     addButton(); 
@@ -24,7 +26,6 @@ const checkIsLoadedPlayer = () => {
         isPlayerHandled = true; 
     }
 };
-
 
 const toggleTheaterMode = () => {
     const elementsToToggle = [
@@ -44,11 +45,9 @@ const toggleTheaterMode = () => {
             }
         } else if (element.length == 0) {
             return 0;
-
         } else {
             element[0].hidden = !element[0].hidden;
         }
-
     });
 
     const mainElement = document.querySelector("body > app-root > app-watcher-layout > div > main");
@@ -76,14 +75,12 @@ const toggleTheaterMode = () => {
     isTheaterMode = !isTheaterMode;
 };
 
-
 const addButton = () => {
     if (!document.body.getElementsByClassName('player-button theatre-button')[0]) {
         let fullscreenButton = document.querySelectorAll('.player-button.fullscreen-button')[0];
         if (!fullscreenButtonHandled) {
             fullscreenButton.addEventListener('click', () => {
                 document.body.getElementsByClassName('player-button theatre-button')[0].parentElement.classList.toggle('hidden');
-                
             });
             fullscreenButtonHandled = true;
         }
@@ -124,10 +121,7 @@ const addButton = () => {
         }
     
         button.addEventListener("click", toggleTheaterMode);
-
     }
-
-   
 };
 
 function checkButton() {
@@ -136,7 +130,5 @@ function checkButton() {
     }
 }
 
-
 checkIsLoadedPlayer();
-
 
