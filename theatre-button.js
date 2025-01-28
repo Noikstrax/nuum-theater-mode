@@ -13,7 +13,7 @@ const checkIsLoadedPlayer = () => {
         setTimeout(checkIsLoadedPlayer, 100);
     } else if (!isPlayerHandled) {
         videoElement.addEventListener('play', function onPlay() {
-            isButtonAdded = false; // Сбрасываем флаг при каждом новом воспроизведении
+            isButtonAdded = false;
             if (!isButtonAdded && !document.body.getElementsByClassName('player-button theatre-button')[0]) {
                 setTimeout(() => {
                     addButton(); 
