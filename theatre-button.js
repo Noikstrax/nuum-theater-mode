@@ -1,5 +1,5 @@
-const openedButtonSvg = "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h7V3H4zM16 3h-3v14h3a2 2 0 002-2V5a2 2 0 00-2-2z";
-const notOpenedButtonSvg = "M2 15V5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2zm2 0V5h7v10H4zm9 0h3V5h-3v10z";
+const SVGPATHTHEATERMODE_ON = "M4 3a2 2 0 00-2 2v10a2 2 0 002 2h7V3H4zM16 3h-3v14h3a2 2 0 002-2V5a2 2 0 00-2-2z";
+const SVGPATHTHEATERMODE_OFF = "M2 15V5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2zm2 0V5h7v10H4zm9 0h3V5h-3v10z";
 let isTheaterMode = false;
 let fullscreenButtonHandled = false;
 let isPlayerHandled = false; 
@@ -62,14 +62,14 @@ const toggleTheaterMode = () => {
         feedElement.style.margin = 0;
         feedElement.style.padding = 0;
         document.body.getElementsByClassName('player-button theatre-button')[0].children[0].textContent = "В нормальный режим";
-        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', openedButtonSvg);
+        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', SVGPATHTHEATERMODE_ON);
     } else {
         mainElement.removeAttribute("style");
         sidebarElement.removeAttribute("style");
         playerWrapper.removeAttribute("style");
         feedElement.removeAttribute("style");
         document.body.getElementsByClassName('player-button theatre-button')[0].children[0].textContent = "Театральный режим";
-        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', notOpenedButtonSvg);
+        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', SVGPATHTHEATERMODE_ON);
     }
 
     isTheaterMode = !isTheaterMode;
@@ -106,7 +106,7 @@ const addButton = () => {
         const path = document.createElementNS(svgNS, 'path');
         path.setAttribute('fill-rule', 'evenodd');
         path.setAttribute('clip-rule', 'evenodd');
-        path.setAttribute('d', notOpenedButtonSvg);
+        path.setAttribute('d', SVGPATHTHEATERMODE_OFF);
         path.setAttribute('fill', '#fff');
     
         svg.appendChild(path);
