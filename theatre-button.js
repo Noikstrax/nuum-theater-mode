@@ -69,7 +69,7 @@ const toggleTheaterMode = () => {
         playerWrapper.removeAttribute("style");
         feedElement.removeAttribute("style");
         document.body.getElementsByClassName('player-button theatre-button')[0].children[0].textContent = "Театральный режим";
-        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', SVGPATHTHEATERMODE_ON);
+        document.body.getElementsByClassName('player-button theatre-button')[0].children[1].children[0].setAttribute('d', SVGPATHTHEATERMODE_OFF);
     }
 
     isTheaterMode = !isTheaterMode;
